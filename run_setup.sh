@@ -46,6 +46,8 @@ fi
 # Erase previous authentication token if present
 rm -f /opt/piavpn-manual/token /opt/piavpn-manual/latencyList
 
+source auth.inc
+
 # Retry login if no token is generated
 while :; do
     while :; do

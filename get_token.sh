@@ -60,6 +60,7 @@ fi
 
 mkdir -p /opt/piavpn-manual
 
+source auth.inc
 if [[ -z $PIA_USER || -z $PIA_PASS ]]; then
   echo "If you want this script to automatically get a token from the Meta"
   echo "service, please add the variables PIA_USER and PIA_PASS. Example:"
