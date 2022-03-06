@@ -106,7 +106,7 @@ Here is a list of scripts you could find useful:
  * [Get DIP details](get_dip.sh): This script will provide necessary connection details to use a dedicated IP.
  * [Connect to WireGuard](connect_to_wireguard_with_token.sh): This script allows you to connect to the VPN server via WireGuard, or create a WireGuard config file by setting environment variable `PIA_CONNECT=false`.
  * [Connect to OpenVPN](connect_to_openvpn_with_token.sh): This script allows you to connect to the VPN server via OpenVPN.
- * [Enable Port Forwarding](port_forwarding.sh): Enables you to add Port Forwarding to an existing VPN connection. Adding the environment variable `PIA_PF=true` to any of the previous scripts will also trigger this script.
+ * [Enable Port Forwarding](port_forwarding.sh): Enables you to add Port Forwarding to an existing VPN connection. Adding the environment variable `PIA_PF=true` to any of the previous scripts will also trigger this script. The current port will be written to the file `PORT_FILE`, if it is set.
 
 ## Manual PF Testing
 

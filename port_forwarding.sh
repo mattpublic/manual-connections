@@ -147,6 +147,10 @@ while true; do
       exit 1
     fi
     echo -e Forwarded port'\t'"${green}$port${nc}"
+    if [[ -n $PORT_FILE ]]; then
+      echo -e Saving port to "${green}$PORT_FILE${nc}"
+      echo "$port" > "$PORT_FILE"
+    fi
     echo -e Refreshed on'\t'"${green}$(date)${nc}"
     echo -e Expires on'\t'"${red}$(date --date="$expires_at")${nc}"
     echo -e "\n${green}This script will need to remain active to use port forwarding, and will refresh every 15 minutes.${nc}\n"
