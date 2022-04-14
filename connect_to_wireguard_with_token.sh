@@ -164,7 +164,6 @@ Endpoint = ${WG_SERVER_IP}:$(echo "$wireguard_json" | jq -r '.server_port')
 " > ${PIA_CONF_PATH} || exit 1
 echo -e "${green}OK!${nc}"
 
-
 if [[ $PIA_CONNECT == "true" ]]; then
   # Start the WireGuard interface.
   # If something failed, stop this script.
@@ -174,6 +173,17 @@ if [[ $PIA_CONNECT == "true" ]]; then
   echo "Trying to create the wireguard interface..."
   wg-quick up pia || exit 1
   echo
+
+  if [[ -n "$LOCAL_ROUTES" ]]; then
+    echo
+    echo Adding more specific local routes...
+    default_gw=$(ip route list default | cut -f 3 -d ' ')
+    echo Found default gateway $default_gateway
+    for local in $LOCAL_ROUTES; do
+      echo Adding $local via $default_gw
+      ip route add $local via $default_gw
+    done
+  fi
   echo -e "${green}The WireGuard interface got created.${nc}
 
   At this point, internet should work via VPN.
